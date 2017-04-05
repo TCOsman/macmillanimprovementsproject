@@ -1,0 +1,387 @@
+body		/* http://tablesorter.com/docs/ */
+{ 
+/* background-color: #FFFFF0;  /* white */
+text-align: center; 
+}	
+
+div#main
+{
+float: none; 
+padding:5px;
+clear: both; 
+position: relative; 
+/* background-color: #eef8fc;  /* blue */
+height:650;
+}	
+
+div#menuOptions 
+{ 
+float: none; 
+padding: 5px; 
+/* background-color: #008000; /* green */
+height: 400px;
+width: 1280px;
+}
+
+
+div#menuButtons1
+{ 
+padding: 10px; 
+float: left; 
+padding: 10x;
+text-align: right; 
+width: 500px;
+height: 250px;
+}
+
+div#menuButtons2
+{ 
+padding: 10px; 
+float: left; 
+padding: 10x;
+text-align: right; 
+width: 500px;
+height: 250px;
+}
+
+div#menuButtons3
+{ 
+padding: 10px; 
+float: left; 
+padding: 10x;
+text-align: center; 
+width: 1250px;
+height: 80px;
+}
+
+div#menuButtons4
+{ 
+padding: 10px; 
+float: left; 
+padding: 10x;
+text-align: center; 
+width: 1250px;
+height: 80px;
+}
+
+div#menuButtons5
+{ 
+padding: 10px; 
+float: left; 
+padding: 10x;
+text-align: center; 
+width: 1250px;
+height: 80px;
+}
+
+a.menubutton1
+{
+float: center;
+background-color: white; 
+padding: 5px;
+color: black;
+font-family: arial;
+font-size: 2em;
+text-decoration: none;
+}
+
+a.menubutton1:hover, a.menubutton1:focus
+{
+background-color: #e6f2ff;
+padding: 5px;
+color: black;
+font-family: arial;
+font-size: 2em;
+font-weight: bold;
+text-decoration: none;
+}
+
+a.menubutton2
+{
+float: center;
+background-color: white; 
+padding: 5px;
+color: black;
+font-family: arial;
+font-size: 1.5em;
+text-decoration: none;
+}
+
+a.menubutton2:hover, a.menubutton1:focus
+{
+background-color: #e6f2ff;
+padding: 5px;
+color: black;
+font-family: arial;
+font-size: 1.5em;
+font-weight: bold;
+text-decoration: none;
+}
+
+div#menuForm1
+{
+float: left; 
+padding: 40px; 
+font-size:1.5em; 
+/* background-color: #FFFF00; /* yellow */
+height:200px;
+width: 340px;
+text-align: center;
+}
+
+div#menuForm2
+{
+float: left; 
+padding: 40px; 
+font-size:1.5em; 
+/* background-color: #FFFF00; /* yellow */
+height:200px;
+width: 340px;
+text-align: center;
+}
+
+div#menuForm3
+{
+float: right; 
+padding: 40px; 
+font-size:1.5em; 
+/* background-color: #FFFF00; /* yellow */
+height:200px;
+width: 340px;
+text-align: center;
+}
+
+
+
+
+/* loging */
+
+div#mainloging
+{
+float: none; 
+padding:5px;
+clear: both; 
+position: relative; 
+background-color: #E5F2FE;  /* blue */
+height:680px;
+}	
+
+
+div#form
+{ 
+float: center; 
+padding: 20px; 
+font-size: 1.5em;
+text-align: left;  
+/* background-color: #FF7F7F; 	/* pessego */
+height:450px;
+}
+
+div#loging
+{ 
+float: center; 
+padding: 10px; 
+font-size: 1.5em;
+text-align: center;  
+/* background-color:#ffff80; 	/* light yellow */
+height:380px;
+}
+
+
+div#username
+{ 
+float: none; 
+font-size: 1.25em;	
+/* background-color: #ff1a1a; 	/* red */
+}		
+
+div#password
+{ 
+float: none; 
+font-size: 1.25em;	
+/* background-color:#66ffff; 	/* water blue */
+}
+
+
+/* login */
+
+div#footer
+{ 
+clear: both; 
+position: relative; 
+border: solid 1px;
+padding: 5px; 
+font-size: 1em; 
+height:20px;
+}		
+
+div#menus
+{ 
+float: none; 
+padding: 10px; 
+font-size: 3.5em; 	
+/* background-color: #E5E5FF; /* light blue */
+height: 150px;
+border: 3px solid;
+}
+
+div#title
+{ 
+float: none; 
+padding: 10px; 
+font-size: 3.5em; 	
+/* background-color: #E5E5FF; /* light blue */
+height: 80px;
+border: 3px solid;
+}
+
+div#newRecord 
+{ 
+float: left; 
+padding: 10px; 
+font-size: 1.5em; 	
+text-align: left;
+/* background-color: #008000; /* green */
+height: 450px;
+width: 1300px
+}
+
+div#newRecord1 /* it divides the form in two divs */
+{ 
+float: left; 
+padding: 20px; 
+font-size: 1.5em; 	
+text-align: left;
+/* background-color: #ffd5c0; /* peach */
+height: 480px;
+width: 580px
+}
+
+div#newRecord2 /* it divides the form in two divs */
+{ 
+float: right; 
+padding: 20px; 
+font-size: 1.5em; 	
+text-align: left;
+/* background-color: #ffc0eb; /* kind of pink */
+height: 480px;
+width: 580px
+}
+
+div#cklist1 /* it divides the form in two divs */
+{ 
+float: left; 
+padding: 20px; 
+font-size: 1em; 	
+text-align: left;
+ /*background-color: #ffd5c0; /* peach */
+height: 350px;
+width: 600px
+}
+
+div#cklist2 /* it divides the form in two divs */
+{ 
+float: right; 
+padding: 20px; 
+font-size: 1em; 	
+text-align: left;
+/* background-color: #ffc0eb; /* kind of pink */
+height: 350px;
+width: 600px
+}
+
+div#identification /* it divides the form in two divs */
+{ 
+float: none; 
+padding: 10px; 
+font-size: 1em; 	
+/* background-color: #CC99CC; /* purple */
+height: 50px;
+}
+
+
+div#sendform
+{
+float: left; 
+padding: 5px; 
+font-size: 1.5em; 
+/* background-color: #FFFF00; /* yellow */
+width: 500px;
+text-align: left;
+}
+
+div#sendform2
+{ 
+float: left; 
+padding: 5px; 
+font-size: 1.5em; 
+/* background-color: #FFC0CB; /* pink */
+width: 500px;
+text-align: left;
+}
+
+div#sendform3
+{ 
+float: left; 
+padding: 5px; 
+font-size: 1.5em; 
+/*background-color: #885159; /* kind of coffee */
+width: 180px;
+text-align: right;
+}
+
+label
+{
+display: inline-block;
+width: 200px;
+}
+
+
+input#notEditable
+{
+background-color: #D0D0D0;
+border-radius:30px; 
+border: 2px;
+text-align: center;
+padding: 2px;
+}
+
+/* upload Form */
+
+a 
+{
+	color:#898989;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover 
+{
+	color:#CC0033;
+}
+ 
+h1 
+{
+	font: bold 14px Helvetica, Arial, sans-serif;
+	color: #CC0033;
+}
+h2 
+{
+	font: bold 14px Helvetica, Arial, sans-serif;
+	color: #898989;
+}
+#container 
+{
+	background: #CCC;
+	margin: 100px auto;
+	width: 945px;
+}
+#form           
+{padding: 20px 150px;
+}
+#form input     
+{
+margin-bottom: 20px;
+}
+/* upload */
+

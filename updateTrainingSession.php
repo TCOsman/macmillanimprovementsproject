@@ -1,0 +1,44 @@
+<?php
+// ************************** SECURITY CHECKS **************************
+//User Levels 1 and 2
+require "session1-2.php";
+?>
+
+<?php
+// connects to the DB
+require "dbconn.php";
+
+
+// to store the location information
+$vTrID   = $_GET['vTrID']; 
+$TrDate  = $_GET['TrDate'];
+$tExp    = $_GET['vTrExpDate'];
+
+echo $vTrID;
+echo $TrDate;
+echo $tExp;
+
+
+//Connect to MYSQL
+$connect = new mysqli($host, $user, $password, $database);
+
+if ($connect->connect_errno)
+	{;
+		echo "Failed to connect to MYSQL" . $connect->connect_error;
+	}
+
+// Update database with new information
+$query1 =  "UPDATE vol_training
+           SET TrDate='$TrDate', vTrExpDate='$tExp' 
+           WHERE vTrID='$vTrID'";  
+
+//execute the query
+$results = $connect->query($query1);
+
+// Closing Connection	
+mysqli_close($connect);  
+// go back to the previous page 
+header("Location: trainingSessionsListing.php");
+// Exits the script
+exit();
+?>
