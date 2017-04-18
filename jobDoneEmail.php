@@ -2,7 +2,7 @@
 // ************************** SECURITY CHECKS **************************
 //User Levels 1 and 2
 require "session1-2.php";
-?>
+?> 
 
 <!DOCTYPE html>   
 <html lang="en" xml:lang="en">  
@@ -17,29 +17,26 @@ require "session1-2.php";
 		<div id="main"> <!-- ======================== Main Page ========================= -->
 			<div id="menus">
 				Database System <br />
-				Main Menu
+				Email Has Been Sent!
 			</div>
 			<br />
 			<div id="menuOptions"> <!-- ======================== Specifies what type o action is needed ========================= -->
-				<div id="menuButtons1"> 
-					<a class="menubutton1" href="addRecords.php">ADD RECORDS</a>
-				</div>	
-				<div id="menuButtons2"> 
-					<a class="menubutton1" href="listRecords.php">LIST RECORDS</a>
-				</div>	
 				<div id="menuButtons3"> 
-					<a class="menubutton1" href="emailDepartment.php">EMAIL DEPARTMENTS</a>
+					<a class="menubutton1" href="emailDepartment.php">SEND ANOTHER EMAIL</a><br /><br />
+					<br /><br />						
+					<a class="menubutton1" href="addRecords.php">MAIN MENU</a><br /><br />
+					<br /><br />						
+					
 				</div>	
 			</div>	
-		</div>
-			<form name="exitform" action="logOut.php" method="get">
+			<form name="exitform" action="index.html" method="get">
 				<div = id="sendform"> <!-- ===== EXIT THE DATABASE form ============-->					
-					<input type="Submit" Value="LOGOUT"></input>
+					<input type="Submit" Value="EXIT"></input>
 				</div>
 			</form>
-			<form name="exitform" action="adminHome.php" method="get">
-				<div = id="sendform3"> <!-- ===== Redirects user to adm page ============-->					
-					<input type="Submit" Value="SYSTEM ADMIN"></input>
+			<form name="mainMenu" action="addRecords.php" method="get">
+				<div = id="sendform3"> <!-- ===== Goes back to the main Menu form ============-->					
+					<input type="Submit" Value="ADD RECORDS MENU"></input>
 				</div>
 			</form>
 		</div>

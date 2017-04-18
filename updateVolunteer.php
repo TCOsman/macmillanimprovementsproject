@@ -25,6 +25,10 @@ $vsdate  = $_GET['volStarDate'];
 $vedate  = $_GET['volEndDate'];
 $vterm   = $_GET['volTermReason']; 
 $vtitle   = $_GET['volTitle'];
+$vjobID = $_GET['jobID'];
+
+$formattedvJobID = substr($vjobID,0,5); 
+//echo $formattedvJobID;
 
 //Connect to MYSQL
 $connect = new mysqli($host, $user, $password, $database);
@@ -40,7 +44,7 @@ $query1 =  "UPDATE volunteer
 		       volAddress1='$vadd1', volAddress2='$vadd2', volAddress3='$vadd3',
                volTown='$vtown', volPostcode='$vpc', volMobile='$vmob',
                volLandline='$vldn', volEmail='$vemail', volStarDate='$vsdate',
-               volEndDate='$vedate', volTermReason='$vterm', volTitle='$vtitle'   	   
+               volEndDate='$vedate', volTermReason='$vterm', volTitle='$vtitle', jobID='$formattedvJobID'	   
            WHERE volID='$vno'";  		   
 		   
 		   
@@ -49,6 +53,7 @@ $results = $connect->query($query1);
 
 // Closing Connection	
 mysqli_close($connect);  
+
 // go back to the previous page 
 header("Location: volunteerListing_name.php");
 // Exits the script

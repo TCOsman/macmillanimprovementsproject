@@ -11,6 +11,7 @@ require "dbconn.php";
 
 // Copy the variables that the form placed in the URL
 // into these fourteen variables
+//$vno = 1;
 $vno     = $_GET['volID']; // it will allow the database to generate the auto_increment.
 $vname   = $_GET['volName'];
 $vsur    = $_GET['volSurname'];
@@ -27,8 +28,14 @@ $vsdate  = $_GET['volStarDate'];
 $vedate  = $_GET['volEndDate'];
 $vterm   = $_GET['volTermReason']; 
 $vtitle  = $_GET['volTitle']; 
+$vjobID  = $_GET['jobID'];
 
+
+$formattedvJobID = substr($vjobID,0,5); 
+
+//echo $formattedvJobID;
 //Connect to MYSQL
+
 $connect = new mysqli($host, $user, $password, $database);
 
 if ($connect->connect_errno)
@@ -38,8 +45,8 @@ if ($connect->connect_errno)
 	
 // set up the query using the values that were passed via the URL from the form
 $query = "INSERT INTO volunteer VALUES	('".$vno."','".$vname."','".$vsur."','".$vdbo."','".$vadd1."','".$vadd2."','".$vadd3."','".$vtown."',
-                                         '".$vpc."','".$vmob."','".$vldn."','".$vemail."','".$vsdate."','".$vedate."','".$vterm."','".$vtitle."')";
-
+                                         '".$vpc."','".$vmob."','".$vldn."','".$vemail."','".$vsdate."','".$vedate."','".$vterm."','".$vtitle."','".$formattedvJobID."')";
+										 
 //execute the query
 $results = $connect->query($query);
 
@@ -49,4 +56,5 @@ mysqli_close($connect);
 header( 'Location:jobDoneVolunteer.php');
 // Exits the script
 exit();
+
 ?>

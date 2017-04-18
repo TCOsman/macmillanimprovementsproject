@@ -331,7 +331,7 @@ text-decoration: none;
 
 a.link:hover, a.link:focus 
 {
-padding: 5px;
+padding: 2px;
 color: black;
 font-family: arial;
 font-weight: bold;
@@ -377,7 +377,7 @@ background-color:  #e0e0d1;
 th.headings
 {
 table-layout:fixed;
-width: 80px;
+width: 90px;
 background-color:  #e0e0d1;
 }
 

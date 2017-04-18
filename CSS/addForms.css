@@ -298,7 +298,10 @@ font-size: 1em;
 /* background-color: #CC99CC; /* purple */
 height: 50px;
 }
-
+div#emailForm 
+{float: left;
+	
+}
 
 div#sendform
 {

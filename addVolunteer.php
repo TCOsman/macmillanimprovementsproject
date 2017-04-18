@@ -16,7 +16,9 @@ if ($connect->connect_errno)
     {
 	echo "Failed to connect to MYSQL: " . $connect->connect_error;
     }
+
 ?>
+
 
 <html lang="en" xml:lang="en">  
 	<head>  
@@ -102,6 +104,47 @@ if ($connect->connect_errno)
 									<option>Withdrew</option>	
 								</optgroup>
 						</select>
+													<label for="jobID">*Job:</label>  
+							
+						<select name="jobID" required>
+								
+								<optgroup label=""><option><?php echo " "  ?></option></optgroup>  <!-- =====blanked first option ====== -->
+								<optgroup label="Available Departments">
+
+								<?php
+								// set up the SQL query
+$query2 = "SELECT jobID, jobDescription
+		  FROM jobrole
+		  ORDER BY jobDescription";
+
+// execute the query
+$results2 = $connect->query($query2);
+
+// count the number of rows that will be selected from the table 
+$numrow = $results2->num_rows;
+									// Volunteer displays loop for each row of data, put the values into an array called $row
+									$count = 0;
+									while ($count < $numrow) 
+										{
+										   // pull one record of data out of the $results array and copy it to $row
+											$row2 = $results2->fetch_assoc();
+												
+											// extract the values from the $row array, and copy them into variables that
+											// have the same names as the field names in the table
+											extract ($row2);
+										
+											echo "<option>"; 
+											echo $jobID." >> ".$jobDescription." ";
+											//echo 'jobid';
+											echo "</option>";
+											echo  "<br />";	
+													
+											// Volunteer displays loop for each row of data, put the values into an array called $row
+											$count = $count + 1;
+										}								
+								?> 
+								</optgroup>
+							</select>
 					
 				</div>	
 				<br />

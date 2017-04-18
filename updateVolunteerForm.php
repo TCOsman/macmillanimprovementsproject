@@ -21,8 +21,12 @@ if ($connect->connect_errno)
 $volID = $_GET['volID'];
 
 // set the SQL query
-$query = "SELECT * FROM volunteer 
+$query = "SELECT volID, volName, volSurname, volDOB, volAddress1, volAddress2, volAddress3, volTown, 
+volPostcode, volMobile, volLandline, volEmail, volStarDate, volEndDate, volTermReason, volTitle, jobID FROM volunteer
+			
 			  WHERE volID = '".$volID."'";
+			  
+			
 
 // execute the query
 $results = $connect->query($query);
@@ -34,6 +38,18 @@ else
   {
   $row = $results->fetch_assoc();
   }
+  
+ /* $query2 = "SELECT *
+		  FROM jobrole
+		  ORDER BY jobDescription";
+  $results2 = $connect->query($query2);
+  if ( $results2->num_rows != 1 )
+  die("Database did not return one result");
+else
+  {
+  $row2 = $results2->fetch_assoc();
+  
+  */
 ?>
 
 <html lang="en" xml:lang="en">  
@@ -53,7 +69,7 @@ else
 	</head>
 	<body>
 		<div id="main"> <!-- ======================== Main Page ========================= -->
-			<div id="title">Edit Recruitment CkList Details</div>
+			<div id="title">Edit Volunteer Details</div>
 			<!-- form with two fields and a submit button -->
 				<form name="updateRecrCklist" action="updateVolunteer.php" method="get">
 					<div id="newRecord1"> <!-- ======================== Add new record information - divided in two divs ========================= -->
@@ -121,8 +137,53 @@ else
 										<option>Retired</option>
 										<option>Withdrew</option>	
 									</optgroup>
+							</select> <br> <br>
+							<label for="jobID">*Job:</label>  
+							
+						<select name="jobID" required>
+								
+								<optgroup label="Current Job"><option><?php echo $row['jobID'];  ?></option></optgroup>  <!-- =====blanked first option ====== -->
+								<optgroup label="Available Departments">
+
+								<?php
+								// set up the SQL query
+$query2 = "SELECT jobID, jobDescription
+		  FROM jobrole
+		  ORDER BY jobDescription";
+
+// execute the query
+$results2 = $connect->query($query2);
+
+// count the number of rows that will be selected from the table 
+$numrow = $results2->num_rows;
+									// Volunteer displays loop for each row of data, put the values into an array called $row
+									$count = 0;
+									while ($count < $numrow) 
+										{
+										   // pull one record of data out of the $results array and copy it to $row
+											$row2 = $results2->fetch_assoc();
+												
+											// extract the values from the $row array, and copy them into variables that
+											// have the same names as the field names in the table
+											extract ($row2);
+										
+											echo "<option>"; 
+											echo $jobID." >> ".$jobDescription." ";
+											//echo 'jobid';
+											echo "</option>";
+											echo  "<br />";	
+													
+											// Volunteer displays loop for each row of data, put the values into an array called $row
+											$count = $count + 1;
+										}								
+								?> 
+								</optgroup>
 							</select>
-					</div>	
+					</div>	<!---
+					<div = id="navbuttons">
+					<a href="updateVolunteerForm.php?volID=<?php echo $volID - 1 ?>"> << </a>
+					<a href="updateVolunteerForm.php?volID=<?php echo $volID + 1 ?>"> >> </a>
+					</div> --->
 					<div = id="sendform"> <!-- ===== sending form ============-->					
 						<input type="Submit" Value="UPDATE"></input>
 					</div>
