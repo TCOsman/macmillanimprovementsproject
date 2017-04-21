@@ -22,7 +22,9 @@ require "session1-2.php";
 			<br />
 			<div id="menuOptions"> <!-- ======================== Specifies what type o action is needed ========================= -->
 				<div id="menuButtons3"> 
-					<a class="menubutton1" href="emailDepartment.php">SEND ANOTHER EMAIL</a><br /><br />
+					<a class="menubutton1" href="emailDepartment.php">SEND DEPARTMENT EMAIL</a><br /><br />
+					<br /><br />	
+					<a class="menubutton1" href="emailVolunteer.php">SEND VOLUNTEER EMAIL</a><br /><br />
 					<br /><br />						
 					<a class="menubutton1" href="addRecords.php">MAIN MENU</a><br /><br />
 					<br /><br />						
@@ -34,11 +36,7 @@ require "session1-2.php";
 					<input type="Submit" Value="EXIT"></input>
 				</div>
 			</form>
-			<form name="mainMenu" action="addRecords.php" method="get">
-				<div = id="sendform3"> <!-- ===== Goes back to the main Menu form ============-->					
-					<input type="Submit" Value="ADD RECORDS MENU"></input>
-				</div>
-			</form>
+	
 		</div>
 		<div id="footer"> <!-- ======================== Main page footer ========================= -->
 			Jorge Souza - Bournemouth University  

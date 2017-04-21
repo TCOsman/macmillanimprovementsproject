@@ -24,7 +24,9 @@ require "session1-2.php";
 				<div id="menuButtons3"> 
 					<a class="menubutton1" href="addDriver.php">ADD ANOTHER RECORD</a><br /><br />
 					<br /><br />						
-					<a class="menubutton1" href="listRecords.php">LISTING MENU</a>
+					<a class="menubutton1" href="listRecords.php">LISTING MENU</a><br /><br />
+					<br /><br />						
+					<a class="menubutton1" href="driverDates.php">VIEW LIST OF DRIVERS</a>
 				</div>	
 			</div>	
 			<form name="exitform" action="index.html" method="get">

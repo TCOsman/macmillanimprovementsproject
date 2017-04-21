@@ -27,7 +27,16 @@ $vterm   = $_GET['volTermReason'];
 $vtitle   = $_GET['volTitle'];
 $vjobID = $_GET['jobID'];
 
-$formattedvJobID = substr($vjobID,0,5); 
+//$formattedvJobID = "NULL";
+//$formattedvJobID = null;
+//$formattedvJobID = "";
+
+//if(!empty($_GET['jobID'])){
+//$formattedvJobID = substr($vjobID,0,5); }
+//else {
+	//$formattedvJobID = NULL;
+//}
+
 //echo $formattedvJobID;
 
 //Connect to MYSQL
@@ -37,15 +46,21 @@ if ($connect->connect_errno)
 	{;
 		echo "Failed to connect to MYSQL" . $connect->connect_error;
 	}
-
+//jobID='$formattedvJobID'
 // Update database with new information
 $query1 =  "UPDATE volunteer
            SET volName='$vname', volSurname='$vsur', volDOB='$vdbo', 
 		       volAddress1='$vadd1', volAddress2='$vadd2', volAddress3='$vadd3',
                volTown='$vtown', volPostcode='$vpc', volMobile='$vmob',
                volLandline='$vldn', volEmail='$vemail', volStarDate='$vsdate',
-               volEndDate='$vedate', volTermReason='$vterm', volTitle='$vtitle', jobID='$formattedvJobID'	   
-           WHERE volID='$vno'";  		   
+               volEndDate='$vedate', volTermReason='$vterm', volTitle='$vtitle'";
+
+		if(!empty($_GET["jobID"])){
+			$formattedvJobID = substr($vjobID,0,5);
+			$query1 .= ", jobID='$formattedvJobID'";
+		}
+			   
+$query1 = $query1 . " WHERE volID='$vno'";  		   
 		   
 		   
 //execute the query

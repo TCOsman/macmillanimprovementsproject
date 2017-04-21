@@ -241,7 +241,7 @@ $completed = "N";
 							}	
 					echo "</table>";
 				echo "</div>";
-				echo "<br />"; 					
+				echo "<br /> <br><br><br><br>"; 					
 					
 						// defining variables to hold pagination
 						$prev = $start - $per_page;

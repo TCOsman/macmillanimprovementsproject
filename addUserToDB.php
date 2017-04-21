@@ -28,7 +28,8 @@ $word = stripslashes($word);
 $name = mysql_real_escape_string($name);
 $word = mysql_real_escape_string($word);
 
-
+//hash the password for security 
+$hashword = password_hash($word, PASSWORD_DEFAULT)."\n"; 
 //Connect to MYSQL
 $connect = new mysqli($host, $user, $password, $database);
 
@@ -38,7 +39,7 @@ if ($connect->connect_errno)
 	}
 	
 // set up the query using the values that were passed via the URL from the form
-$query = "INSERT INTO users VALUES	('".$vno."','".$name."','".$word."','".$level."','".$jno."')";
+$query = "INSERT INTO users VALUES	('".$vno."','".$name."','".$hashword."','".$level."','".$jno."')";
 
 //execute the query
 $results = $connect->query($query);

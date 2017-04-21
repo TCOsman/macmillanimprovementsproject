@@ -181,8 +181,8 @@ $numrow = $results2->num_rows;
 							</select>
 					</div>	<!---
 					<div = id="navbuttons">
-					<a href="updateVolunteerForm.php?volID=<?php echo $volID - 1 ?>"> << </a>
-					<a href="updateVolunteerForm.php?volID=<?php echo $volID + 1 ?>"> >> </a>
+					<a href="updateVolunteerForm.php?volID=<?php //echo $volID - 1 ?>"> << </a>
+					<a href="updateVolunteerForm.php?volID=<?php //echo $volID + 1 ?>"> >> </a>
 					</div> --->
 					<div = id="sendform"> <!-- ===== sending form ============-->					
 						<input type="Submit" Value="UPDATE"></input>

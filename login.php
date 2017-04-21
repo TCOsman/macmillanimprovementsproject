@@ -16,29 +16,39 @@ if (isset($_POST['submit']))
 		else
 			{
 				// Define $username and $password
-				$username=$_POST['username'];
-				$password=$_POST['password'];
+				$postusername=$_POST['username'];
+				$postpassword=$_POST['password'];
 				
 				// Establishing Connection with Server by passing server_name, username and password as a parameter
 				$connection = mysqli_connect("localhost", "root", "", "mcl");
 
 				// To protect MySQL injection for Security purpose, all the backslashs are removed.
-				$username = stripslashes($username);
-				$password = stripslashes($password);
+				$postusername = stripslashes($postusername);
+				$postpassword = stripslashes($postpassword);
 
 				// To protect MySQL injection for Security purpose, escapes special characters. 
-				$username = mysql_real_escape_string($username);
-				$password = mysql_real_escape_string($password);
+				$postusername = mysql_real_escape_string($postusername);
+				$postpassword = mysql_real_escape_string($postpassword);
 
-				echo $username;
-				echo $password;
+//				echo $postusername;
+	//			echo $postpassword;
 
 				// SQL query to fetch information of registerd users and finds user match.
+				/*
 				$query = "select * 
 							FROM usersview  
 							WHERE password='$password' 
 							AND username='$username'";
-										
+							
+							*/
+				$query = "select * 
+							FROM usersview  
+							WHERE  username='$postusername'";	
+							
+					/*	$query = "select volID, username, password
+							FROM usersview  
+							WHERE  username='$postusername'";	
+						*/	
 				 // executes query
 				 $result = mysqli_query($connection, $query);
 				 
@@ -53,9 +63,25 @@ if (isset($_POST['submit']))
 					mysqli_free_result($result); // frees the memory 
 					//mysqli_close($db);
 					
-				
-				if ($rows ==1)
-					{	
+			//		echo $volID;
+				//	echo $username;
+				//	echo $password.'apple';
+				//	echo $userLevel;
+					
+				//	echo $rows;
+					
+			
+			$password = trim($password);
+			
+				//if ($rows ==1)
+					
+				/*
+					if (password_verify($postpassword,$password))
+					{
+					echo "yes"; }
+					else { echo "no";}
+					*/
+					if (password_verify($postpassword,$password)) {
 						// Session is intialised
 						$_SESSION['login_user']=$username; 
                         $_SESSION['user_level']=$userLevel; 
@@ -99,8 +125,8 @@ if (isset($_POST['submit']))
 					}
 				
  				
-			}
-			
+					}	
+	
 // Closing Connection	
 mysqli_close($connection); 
 // Exits the script

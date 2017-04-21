@@ -24,7 +24,9 @@ require "session1-2.php";
 				<div id="menuButtons3"> 
 					<a class="menubutton1" href="addRecrCklist.php">ADD ANOTHER RECORD</a><br /><br />
 					<br /><br />						
-					<a class="menubutton1" href="listRecords.php">LISTING MENU</a>
+					<a class="menubutton1" href="listRecords.php">LISTING MENU</a><br /><br />
+					<br /><br />						
+					<a class="menubutton1" href="cklistListing_name.php">VIEW CHECKLISTS</a>
 				</div>	
 			</div>	
 			<form name="exitform" action="index.html" method="get">

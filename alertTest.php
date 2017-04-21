@@ -9,8 +9,8 @@ if ($connect->connect_errno)
     }
 
 // set up the SQL query
-// to set a variable which holds the query results - Ordered by polyce expiration date (only active ones)
-$query = ("SELECT i.insID, i.insPolicy, i.insExpDate, i.MOT, i.insNote, i.vehID, i.volID, 
+// to set a variable which holds the query results - Ordered by policy expiration date (only active ones)
+$insquery = ("SELECT i.insID, i.insPolicy, i.insExpDate, i.MOT, i.insNote, i.vehID, i.volID, 
 							v.volName, v.volSurname, h.vehID, h.vehReg  
 							FROM insurance i, vehicle h, volunteer v 
 							WHERE i.insExpDate >= '1900-01-01'
@@ -20,7 +20,7 @@ $query = ("SELECT i.insID, i.insPolicy, i.insExpDate, i.MOT, i.insNote, i.vehID,
                             GROUP BY i.insID, i.insPolicy, i.insExpDate 
 							ORDER BY i.insExpDate");	
 							
-$results = $connect->query($query);
+$results = $connect->query($insquery);
 		  
 		  
 // count the number of rows that will be selected from query 
@@ -28,12 +28,12 @@ $numrow = $results->num_rows;
 
 // to store todays date to check expired documents
 $today = date("Y-m-d");
-
-$query2 = ("SELECT d.drExpDate, d.volID, v.volName, v.volSurname FROM driver d, volunteer v 
+//select the driving license expiry dates for every volunteer
+$licencequery2 = ("SELECT d.drExpDate, d.volID, v.volName, v.volSurname FROM driver d, volunteer v 
 			WHERE d.drExpDate >= '1900-01-01' 
 			AND d.drExpDate <= '2030-01-01' AND d.volID = v.volID");	
 							
-$results2 = $connect->query($query2);
+$results2 = $connect->query($licencequery2);
 		  
 		  
 // count the number of rows that will be selected from query2* 
@@ -57,8 +57,11 @@ $count = 0;
 */
 //echo $volName;
 		IF ( ((strtotime($MOT) - strtotime($today))/86400 ) <= 60)  {
-		echo '<script language="javascript">';
+
+echo '<script language="javascript">';
+ echo 'window.onload = function(){';
   echo 'alert("ALERT! " + "'.$volName.'"+ " " + "'.$volSurname.'" + " " + "has an expiring MOT!")';
+ echo '}';
   echo '</script>';
 	
 
@@ -66,7 +69,9 @@ $count = 0;
 		
 			IF ( ((strtotime($insExpDate) - strtotime($today))/86400 ) <= 60)  {
 		echo '<script language="javascript">';
+		 echo 'window.onload = function(){';
   echo 'alert("ALERT! " + "'.$volName.'"+ " " + "'.$volSurname.'" + " " + "has an expiring Insurance Policy!")';
+		 echo '}';
   echo '</script>';
   
   
@@ -106,6 +111,9 @@ $count2 = 0;
 							$count2 = $count2 + 1;
 	
 						}
+						
+						
+
 
 
 
