@@ -1,7 +1,7 @@
 <?php
 // ************************** SECURITY CHECKS **************************
-//User Levels 1 and 2
-require "session1-2.php";
+//User Levels 1 
+require "session1.php";
 ?>
 
 <?php
@@ -18,8 +18,9 @@ if ($connect->connect_errno)
     }
 
 // set up the SQL query
-$query = "SELECT volID, volName, VolSurname 
-		  FROM volunteer
+$query = "SELECT u.volID, v.volName, v.VolSurname 
+		  FROM volunteer v, usersview u 
+		  where u.volID = v.volID
 		  ORDER BY volName";
 
 // execute the query
@@ -45,16 +46,16 @@ $numrow = $results->num_rows;
 	</head>
 	<body>
 		<div id="main"> <!-- ======================== Main Page ========================= -->
-			<div id="title">Email Volunteer</div>
+			<div id="title">Change User Password</div>
 			<br />
 			<!-- form with four fields and a submit buttons -->
-			<form name="sendEmail" action="sendVolEmail.php" enctype="multipart/form-data" method="post">
+			<form name="adminchangePassword" action="adminAddPassword.php" method="get">
 				<div id="newRecord"> <!-- ======================== Add new record information ========================= -->
 						<div id="identification"> <!-- ======================== identification information ========================= -->
 						Volunteer:	
 							<select name="volID" required>
 								<optgroup label=""><option></option></optgroup>  <!-- =====blanked first option ====== -->
-								<optgroup label="Available Volunteers">
+								<optgroup label="Available Users">
 
 								<?php
 									// Volunteer displays loop for each row of data, put the values into an array called $row
@@ -83,15 +84,15 @@ $numrow = $results->num_rows;
 						</div>  
 					<br />
 					
-					<label for="Subject">Email Subject:</label>     
-						<input type="text" name="Subject" size="30" required></input><br />
-				<br>
-				    <input type="file" name="file" id="file" class="inputfile inputfile-5"  />
-    
+					<label for="Subject">New Password:</label>     
+						<input type="Password" name="Password1" size="30" required></input><br />
+				
 					<br>
 					<br>
-						<textarea name="Email" rows="8" cols="70"></textarea>
-					
+					<label for="Subject">Confirm Password:</label>     
+						<input type="Password" name="Password2" size="30" required></input><br />
+						
+					</form>	
 					
 					<br>
 					

@@ -2,11 +2,18 @@
 
 $jobNo = $_POST['jobID'];
 $subject = $_POST['Subject'];
+$file = $_POST['file'];
 $email = $_POST['Email'];
 
 $formattedEmail = nl2br($email);
 $formattedJobNo = substr($jobNo,0,5);
+move_uploaded_file($_FILES["file"]["tmp_name"],"./upload/" . $_FILES["file"]["name"]);
+$filename = "./upload/" . $_FILES["file"]["name"];
 
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+if($ext == "exe"){
+$filename = "";}
 // connect to the database
 require "dbconn.php";
 
@@ -94,7 +101,7 @@ $mail->Subject = $subject;
 $mail->msgHTML($formattedEmail);
 //Replace the plain text body with one created manually
 //$mail->AltBody = 'This is a plain-text message body';
-  
+ $mail->AddAttachment($filename);
   
 //send the message, check for errors
 if (!$mail->send()) {

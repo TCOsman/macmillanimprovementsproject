@@ -38,17 +38,18 @@ if (!$start)
    $start = 0;
 
 // to set a variable which holds the query results - Ordered by volID
-/*$get = $connect->query("SELECT *
+/* $get = $connect->query("SELECT *
 		  FROM volunteer
-		  ORDER BY volTermReason desc, volEndDate
+		  ORDER BY volStarDate
 		  LIMIT $start, $per_page");
-*/
+	*/	  
 $get = $connect->query("SELECT v.volID, v.volName, v.volSurname, v.volDOB, v.volAddress1, v.volAddress2, v.volAddress3, v.volTown, v.volPostcode, v.volMobile, v.volLandline, v.volEmail, v.volStarDate, v.volEndDate, v.volTermReason, v.volTitle, v.jobID, j.jobDescription, j.jobID 
 FROM volunteer v  
 LEFT JOIN jobrole j
 ON v.jobID = j.jobID
- ORDER BY volTermReason desc, volEndDate
+ ORDER BY volDOB 
 		  LIMIT $start, $per_page");
+
 // count the number of rows that will be selected from query 
 $numrow = $get->num_rows;
 ?>
@@ -67,9 +68,9 @@ $numrow = $get->num_rows;
 			<div id="title">Volunteers Listing</div>
 			<br />
 				<div id="listingFontSize"> <!-- ======================== List of volunteer with smaller fontSize ========================= -->
-					<table border="1" class="tableStyle" >
+					<table border="1" class="tableStyle">
 					<th class="thirty"><a a class="link" href="volunteerListing_name.php">Name<span class="symbol"> &#x1F589 </span></th>
-					<th class="ten"><a a class="link" href="volunteerListing_DOB.php">DOB</th></th>
+					<th class="ten headings">DOB  <a a class="link" href="volunteerListing_dobdesc.php"> ▼</th>
 					<th class="twenty">Address1</th>
 					<th class="twenty">Address2</th>
 					<th class="twenty">Address3</th>					
@@ -80,7 +81,7 @@ $numrow = $get->num_rows;
 					<th class="twenty">Email</th> 
 					<th class="ten"><a a class="link" href="volunteerListing_start.php">Start Date</th>
 					<th class="ten">Termination Date</th>
-					<th class="ten headings"><a a class="link" href="volunteerListing_term.php">Termination Reason</th>
+					<th class="ten"><a a class="link" href="volunteerListing_term.php">Termination Reason</th>
 					<th class="ten"><a a class="link" href="volunteerListing_job.php">Job</th>
 					<th class="ten"><a a class="link" href="volunteerListing_Service.php">Length of Service (Months)</th>
 					<th class="five">DELETE</th>
@@ -103,7 +104,7 @@ $numrow = $get->num_rows;
 								"<a class='link' href='updateVolunteerForm.php?volID=".$volID."'>".$volName." ".$volSurname."</a>";
 								echo "</td>";
 								
-								echo "<td>";
+								echo "<td class='headings'>";
 								echo $volDOB; 
 								echo "</td>";
 								
@@ -147,7 +148,7 @@ $numrow = $get->num_rows;
 								echo $volEndDate; 
 								echo "</td>";
 								
-								echo "<td class='headings'>";
+								echo "<td>";
 								echo $volTermReason; 
 								echo "</td>";
 								
@@ -160,6 +161,7 @@ $numrow = $get->num_rows;
 								$serviceLength = round( $serviceLength, 1, PHP_ROUND_HALF_UP);
 								echo $serviceLength;
 								echo "</td>";
+							
 								
 								// delete button with a warning box
 								echo "<td class='center'>";
@@ -173,18 +175,17 @@ $numrow = $get->num_rows;
 							}	
 					echo "</table>";
 				echo "</div>";
-				echo "<br />";		
-	echo "<br> <br> <br>";
 				echo "<br> <br> <br>";
 				echo "<br> <br> <br>";
-				echo "<br />";					
+				echo "<br> <br> <br>";
+				echo "<br />";										
 					
 						// defining variables to hold pagination
 						$prev = $start - $per_page;
 						$next = $start + $per_page;
 						echo "<div id='pagination'>"; // ====== pagination 			
 							if (!($start<=0))
-								echo "<a href='volunteerListing_term.php?start=$prev'>&#9668</a>";
+								echo "<a href='volunteerListing_DOB.php?start=$prev'>&#9668</a>";
 								
 								//set variable for first page number
 								$i=1;
@@ -193,15 +194,15 @@ $numrow = $get->num_rows;
 							for ($x = 0; $x < $record_count; $x = $x + $per_page)
 									{
 										if ($start != $x)
-											echo "<a href='volunteerListing_term.php?start=$x'>$i</a>";
+											echo "<a href='volunteerListing_DOB.php?start=$x'>$i</a>";
 										else
-											echo "<a href='volunteerListing_term.php?start=$x'><b>$i</b></a>";
+											echo "<a href='volunteerListing_DOB.php?start=$x'><b>$i</b></a>";
 										$i++;
 									}
 
 							//show next button
 							if (!($start >= $record_count - $per_page))
-								   echo "<a href='volunteerListing_term.php?start=$next'>&#9658</a>";
+								   echo "<a href='volunteerListing_DOB.php?start=$next'>&#9658</a>";
 						echo "</div>"; 								   
 						?> 
 				<form name="listingMenu" action="listRecords.php" method="get">

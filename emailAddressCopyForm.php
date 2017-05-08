@@ -18,15 +18,16 @@ if ($connect->connect_errno)
     }
 
 // set up the SQL query
-$query = "SELECT volID, volName, VolSurname 
-		  FROM volunteer
-		  ORDER BY volName";
+$query = "SELECT volEmail 
+		  FROM volunteer";
 
 // execute the query
 $results = $connect->query($query);
 
 // count the number of rows that will be selected from the table 
 $numrow = $results->num_rows;
+
+
 ?>
 
 <!DOCTYPE html>   
@@ -41,24 +42,23 @@ $numrow = $results->num_rows;
         <script type="text/javascript" src="Jquery/js/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="Jquery/js/jquery-ui-1.10.4.custom.min.js"></script>	
 		<script type="text/javascript" src="JS_Web/datepicker.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/addForms.css"/>		
+		<script src="clipboard.js-master/dist/clipboard.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/addForms.css"/>
+		
+		
 	</head>
 	<body>
 		<div id="main"> <!-- ======================== Main Page ========================= -->
-			<div id="title">Email Volunteer</div>
+			<div id="title">Copy all Volunteer Email Addresses</div>
 			<br />
 			<!-- form with four fields and a submit buttons -->
-			<form name="sendEmail" action="sendVolEmail.php" enctype="multipart/form-data" method="post">
+			
 				<div id="newRecord"> <!-- ======================== Add new record information ========================= -->
-						<div id="identification"> <!-- ======================== identification information ========================= -->
-						Volunteer:	
-							<select name="volID" required>
-								<optgroup label=""><option></option></optgroup>  <!-- =====blanked first option ====== -->
-								<optgroup label="Available Volunteers">
-
-								<?php
-									// Volunteer displays loop for each row of data, put the values into an array called $row
-									$count = 0;
+					 
+					<br />
+					
+					
+						<textarea name="emailtext" rows="20" cols="100" ><?php $count = 0;
 									while ($count < $numrow) 
 										{
 										   // pull one record of data out of the $results array and copy it to $row
@@ -68,40 +68,24 @@ $numrow = $results->num_rows;
 											// have the same names as the field names in the table
 											extract ($row);
 										
-											echo "<option>"; 
-											echo $volID." >> ". " " . $volName. " " .$VolSurname." ";
+											 
+											echo $volEmail.","." ";
 										
-											echo "</option>";
-											echo  "<br />";	
+										
 													
 											// Volunteer displays loop for each row of data, put the values into an array called $row
-											$count = $count + 1;
-										}								
-								?> 
-								</optgroup>
-							</select>
-						</div>  
-					<br />
-					
-					<label for="Subject">Email Subject:</label>     
-						<input type="text" name="Subject" size="30" required></input><br />
-				<br>
-				    <input type="file" name="file" id="file" class="inputfile inputfile-5"  />
-    
-					<br>
-					<br>
-						<textarea name="Email" rows="8" cols="70"></textarea>
-					
+										$count = $count + 1;                              }?>  </textarea>
+		
 					
 					<br>
-					
+
+<br/>
+
+
 				
 				<br />
 				
-				<div = id="sendform"> <!-- ===== sending form ============-->					
-					<input type="Submit" Value="SUBMIT"></input>
-				</div>
-			</form>
+		
 			
 			
 			<form name="exitform" action="logOut.php" method="get">

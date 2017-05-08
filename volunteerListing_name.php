@@ -72,14 +72,21 @@ $numrow = $get->num_rows;
 		<div id="main"> <!-- ======================== Main Page ========================= -->
 			<div id="title">Volunteers Listing</div>
 			<br />
+			<div id="searchBar">
+			<form name="searchContent" action="volunteerListing_SearchResultTest.php" method="get">
+			<label for="SearchBar">Search First Name</label>     
+						<input type="text" name="searchname" size="30" required></input><br />
+						
+			</form>
+			</div>
 				<div id="listingFontSize"> <!-- ======================== List of volunteer with smaller fontSize ========================= -->
 					<table border="1" class="tableStyle" >
 					<th class="thirty headings"><a a class="link" href="volunteerListing_name.php">Name <!---<span class="symbol"> &#x1F589 </span> --></th>
-					<th class="ten">DOB</th>
+					<th class="ten"><a a class="link" href="volunteerListing_DOB.php">DOB</th>
 					<th class="twenty">Address1</th>
 					<th class="twenty">Address2</th>
 					<th class="twenty">Address3</th>					
-					<th class="ten">Town</th>
+					<th class="ten"><a a class="link" href="volunteerListing_town.php">Town</th>
 					<th class="ten">Postcode</th>
 					<th class="ten">Mobile</th>
 					<th class="ten">Landline</th>
@@ -87,7 +94,8 @@ $numrow = $get->num_rows;
 					<th class="ten"><a a class="link" href="volunteerListing_start.php">Start Date</th>
 					<th class="ten">Termination Date</th>
 					<th class="ten"><a a class="link" href="volunteerListing_term.php">Termination Reason</th>
-					<th class="twenty">Job </th>
+					<th class="twenty"><a a class="link" href="volunteerListing_job.php">Job</th>
+					<th class="ten"><a a class="link" href="volunteerListing_Service.php">Length of Service (Months)</th>
 					<th class="five">DELETE</th>
 					<?php	
 						// for each row of data, put the values into an array called $row
@@ -160,6 +168,13 @@ $numrow = $get->num_rows;
 								echo $jobDescription; 
 								echo "</td>";
 								
+								echo "<td>";
+								$today = date("Y-m-d");
+								$serviceLength = ((strtotime($today) - strtotime($volStarDate))/2592000 );
+								$serviceLength = round( $serviceLength, 1, PHP_ROUND_HALF_UP);
+								echo $serviceLength;
+								echo "</td>";
+								
 								// delete button with a warning box
 								echo "<td class='center'>";
 								echo 	"<a class='delete' href='deleteVolunteer.php?volID=".$volID."' 
@@ -177,6 +192,7 @@ $numrow = $get->num_rows;
 					echo "<Br> <br>";
 					echo "<Br> <br>";
 					echo "<Br> <br>";
+					echo "<br> <br>";
 						// defining variables to hold pagination
 						$prev = $start - $per_page;
 						$next = $start + $per_page;

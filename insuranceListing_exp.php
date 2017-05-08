@@ -75,6 +75,7 @@ $today = date("Y-m-d");
 			Jorge Souza - MacMillan Caring Locally Database System
 		</title>
 		<link rel="stylesheet" type="text/css" href="css/listing.css"/>
+
 	</head>
 	<body>
 		<div id="main"> <!-- ======================== Main Page ========================= -->

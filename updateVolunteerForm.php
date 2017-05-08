@@ -20,13 +20,29 @@ if ($connect->connect_errno)
 // to store the training information 
 $volID = $_GET['volID'];
 
-// set the SQL query
+// set the SQL query 
+/*
 $query = "SELECT volID, volName, volSurname, volDOB, volAddress1, volAddress2, volAddress3, volTown, 
 volPostcode, volMobile, volLandline, volEmail, volStarDate, volEndDate, volTermReason, volTitle, jobID FROM volunteer
 			
 			  WHERE volID = '".$volID."'";
-			  
+*/
+			  //attempted left join query
+$query = "SELECT v.volID, v.volName, v.volSurname, v.volDOB, v.volAddress1, v.volAddress2, v.volAddress3, v.volTown, v.volPostcode, v.volMobile, v.volLandline, v.volEmail, v.volStarDate, v.volEndDate, v.volTermReason, v.volTitle, v.jobID, j.jobDescription, j.jobID 
+FROM volunteer v LEFT JOIN jobrole j ON j.jobID = v.jobID 
+Where volID = '".$volID."'";			  
+	  
+
+/*
+
+//non join query that doesn't work when no job selected 			  
+$query = "SELECT v.volID, v.volName, v.volSurname, v.volDOB, v.volAddress1, v.volAddress2, v.volAddress3, v.volTown, 
+v.volPostcode, v.volMobile, v.volLandline, v.volEmail, v.volStarDate, v.volEndDate, v.volTermReason, v.volTitle, v.jobID, j.jobDescription FROM volunteer v, jobrole j
 			
+			  WHERE volID = '".$volID."'
+			  AND v.jobID = j.jobID";
+*/			  	
+	
 
 // execute the query
 $results = $connect->query($query);
@@ -65,11 +81,55 @@ else
 		<script type="text/javascript" src="JS_Web/datepicker1.js"></script>
 		<script type="text/javascript" src="JS_Web/datepicker2.js"></script>
 		<script type="text/javascript" src="JS_Web/datepicker3.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/addForms.css"/>	
+		<link rel="stylesheet" type="text/css" href="css/addForms.css"/>
+<style>
+
+</style>		
 	</head>
 	<body>
+	
+	
+	
+	
 		<div id="main"> <!-- ======================== Main Page ========================= -->
 			<div id="title">Edit Volunteer Details</div>
+			<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Add Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="addRecrCklist.php">Checklist</a>
+    <a href="addDbsCertificate.php">DBS Cert</a>
+    <a href="addNOfKin.php">Next of Kin</a>
+	<a href="addVol_Availability.php">Availability</a>
+    <a href="addDriver.php">Driver</a>
+	<a href="addVehicle.php">Vehicle</a>
+    <a href="addInsurance.php">Insurance</a>
+
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+			
 			<!-- form with two fields and a submit button -->
 				<form name="updateRecrCklist" action="updateVolunteer.php" method="get">
 					<div id="newRecord1"> <!-- ======================== Add new record information - divided in two divs ========================= -->
@@ -142,7 +202,7 @@ else
 							
 						<select name="jobID" required>
 								
-								<optgroup label="Current Job"><option><?php echo $row['jobID'];  ?></option></optgroup>  <!-- =====blanked first option ====== -->
+								<optgroup label="Current Job"><option><?php echo $row['jobID']; echo "  ". $row['jobDescription'];  ?></option></optgroup> 
 								<optgroup label="Available Departments">
 
 								<?php
@@ -168,6 +228,7 @@ $numrow = $results2->num_rows;
 											extract ($row2);
 										
 											echo "<option>"; 
+										//	echo $jobID;
 											echo $jobID." >> ".$jobDescription." ";
 											//echo 'jobid';
 											echo "</option>";
@@ -211,4 +272,4 @@ $numrow = $results2->num_rows;
 mysqli_close($connect); 
 // Exits the script
 exit();
-?>
+?>

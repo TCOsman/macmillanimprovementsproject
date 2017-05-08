@@ -2,13 +2,23 @@
 
 $volID = $_POST['volID'];
 $subject = $_POST['Subject'];
+$file = $_POST['file'];
 $email = $_POST['Email'];
+
+
 
 $formattedEmail = nl2br($email);
 $formattedVolNo = substr($volID,0,5);
 
+move_uploaded_file($_FILES["file"]["tmp_name"],"./upload/" . $_FILES["file"]["name"]);
+$filename = "./upload/" . $_FILES["file"]["name"];
 // connect to the database
 require "dbconn.php";
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+if($ext == "exe"){
+$filename = "";}
+echo $filename;
 
 // Test to check if the database is connected
 $connect = new mysqli($host, $user, $password, $database);
@@ -96,7 +106,7 @@ $mail->Subject = $subject;
 $mail->msgHTML($formattedEmail);
 //Replace the plain text body with one created manually
 //$mail->AltBody = 'This is a plain-text message body';
-  
+$mail->AddAttachment($filename); 
   
 //send the message, check for errors
 if (!$mail->send()) {

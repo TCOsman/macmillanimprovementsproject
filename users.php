@@ -28,6 +28,9 @@ require "session1.php";
 				<div id="menuButtons2"> 
 					<a class="menubutton1" href="userListing_name.php">LIST USERS</a>
 				</div>	
+				<div id="menuButtons3"> 
+					<a class="menubutton1" href="adminChangePassword.php">CHANGE PASSWORDS</a>
+				</div>	
 			</div>	
 		</div>
 			<form name="exitform" action="logOut.php" method="get">

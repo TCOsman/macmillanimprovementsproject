@@ -38,7 +38,44 @@ if ($connect->connect_errno)
 	</head>
 	<body>
 		<div id="main"> <!-- ======================== Main Page ========================= -->
-			<div id="title">Volunteers Details</div>
+			<div id="title">Add Volunteers Details</div>
+			
+						<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Add Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="addRecrCklist.php">Checklist</a>
+    <a href="addDbsCertificate.php">DBS Cert</a>
+    <a href="addNOfKin.php">Next of Kin</a>
+	<a href="addVol_Availability.php">Availability</a>
+    <a href="addDriver.php">Driver</a>
+	<a href="addVehicle.php">Vehicle</a>
+    <a href="addInsurance.php">Insurance</a>
+
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 			<!-- form with eight fields and a submit button -->
 			<form name="inputVolunteer" action="addVolunteerToDB.php" method="get">
 				<div id="newRecord1"> <!-- ======================== Add new record information - divided in two divs ========================= -->

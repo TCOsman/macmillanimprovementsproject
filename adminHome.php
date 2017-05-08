@@ -43,7 +43,7 @@ require "session1.php";
 	<body>
 	<div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>WARNING!</strong> <br> <?php	require "dbconn.php";
+  <strong>EXPIRATION WARNINGS</strong> <br> <?php	require "dbconn.php";
 
 $connect = new mysqli($host, $user, $password, $database);
 
@@ -154,13 +154,21 @@ echo ($volName . " " . $volSurname.  " " . 'has a licence expiring on ' . $drExp
 	
 	
 	
-	
-	
-	
 		<div id="main"> <!-- ======================== Main Page ========================= -->
+				
+			
+			
+			
 			<div id="menus">
-				Database System <br />
-				Administrator 
+			
+			
+			<img src="Macmillan_logo_web.jpg" alt="Macmillan" style="width:200px;height:118px"> 
+		
+	<div id="menutext">
+				Database System 
+				Administrator
+	</div>			
+		</div>
 			</div>
 			<br />
 			<div id="menuOptions"> <!-- ======================== Specifies what type o action is needed ========================= -->
@@ -170,14 +178,16 @@ echo ($volName . " " . $volSurname.  " " . 'has a licence expiring on ' . $drExp
 					<br /><br /><br /><br />
 					<a class="menubutton1" href="users.php">MANAGE USERS</a>
 										<br /><br /><br /><br />
-					<a class="menubutton1" href="users.php">EMAIL VOLUNTEER</a>
+					<a class="menubutton1" href="emailvolunteer.php">EMAIL VOLUNTEER</a>
+					<br> <BR> <BR><BR>
+					<a class="menubutton1" href="emailAddressCopyForm.php">EMAIL ADDRESSES</a>
 				</div>	
 				<div id="menuButtons2"> 
 					<a class="menubutton1" href="listRecords.php">LIST RECORDS</a>
 					<br /><br /><br /><br />
 					<a class="menubutton1" href="manageFiles.php">MANAGE FILES</a>
 					<br /><br /><br /><br />
-					<a class="menubutton1" href="manageFiles.php">EMAIL DEPARTMENT</a>
+					<a class="menubutton1" href="emaildepartment.php">EMAIL DEPARTMENT</a>
 					
 				</div>	
 			</div>	
@@ -185,6 +195,11 @@ echo ($volName . " " . $volSurname.  " " . 'has a licence expiring on ' . $drExp
 			<form name="exitform" action="logOut.php" method="get">
 				<div = id="sendform3"> <!-- ===== EXIT THE DATABASE form ============-->					
 					<input type="Submit" Value="EXIT"></input>
+				</div>
+			</form>
+			<form name="Update Password" action="userUpdatePassword.php" method="get">
+				<div = id="sendform3"> <!-- ===== Goes back to the main Menuform ============-->					
+					<input type="Submit" Value="CHANGE PASSWORD"></input>
 				</div>
 			</form>
 		</div>

@@ -2,6 +2,7 @@ body		/* http://tablesorter.com/docs/ */
 { 
 /* background-color: #FFFFF0;  /* white */
 text-align: center; 
+font-family: 'Roboto', sans-serif;
 }	
 
 div#main
@@ -80,7 +81,7 @@ float: center;
 background-color: white; 
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 2em;
 text-decoration: none;
 }
@@ -90,7 +91,7 @@ a.menubutton1:hover, a.menubutton1:focus
 background-color: #e6f2ff;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 2em;
 font-weight: bold;
 text-decoration: none;
@@ -102,7 +103,7 @@ float: center;
 background-color: white; 
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1.5em;
 text-decoration: none;
 }
@@ -112,7 +113,7 @@ a.menubutton2:hover, a.menubutton1:focus
 background-color: #e6f2ff;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1.5em;
 font-weight: bold;
 text-decoration: none;
@@ -217,16 +218,20 @@ height:20px;
 
 div#menus
 { 
+
+font-family: 'Roboto', sans-serif;
 float: none; 
 padding: 10px; 
 font-size: 3.5em; 	
 /* background-color: #E5E5FF; /* light blue */
 height: 150px;
 border: 3px solid;
+
 }
 
 div#title
 { 
+
 float: none; 
 padding: 10px; 
 font-size: 3.5em; 	
@@ -335,6 +340,7 @@ text-align: right;
 
 label
 {
+font-family: 'Roboto', sans-serif;
 display: inline-block;
 width: 200px;
 }
@@ -386,5 +392,62 @@ h2
 {
 margin-bottom: 20px;
 }
+
+.dropbtn {
+    background-color: #2aa4cc;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2fc0ef;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 105px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+	font-family: 'Roboto', sans-serif;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+.dropdown {
+	float:right;
+}
+
+#menus img{
+	float: left;
+	padding-right: -45px;
+}
+div#menutext {
+	
+	padding-top : 40px;
+	margin-right : 180px;
+}
+
+
+
 /* upload */
 

@@ -44,16 +44,16 @@ $numrow = $results->num_rows;
 		<link rel="stylesheet" type="text/css" href="css/addForms.css"/>		
 	</head>
 	<body>
-		<div id="main"> <!-- ======================== Main Page ========================= -->
+		<div id="main"> 
 			<div id="title">Email Departments</div>
 			<br />
-			<!-- form with four fields and a submit buttons -->
-			<form name="sendEmail" action="sendDeptEmail.php" method="post">
-				<div id="newRecord"> <!-- ======================== Add new record information ========================= -->
-						<div id="identification"> <!-- ======================== identification information ========================= -->
+			
+			<form name="sendEmail" action="sendDeptEmail.php" enctype="multipart/form-data" method="post">
+				<div id="newRecord"> 
+						<div id="identification"> 
 						Macmillan Department:	
 							<select name="jobID" required>
-								<optgroup label=""><option></option></optgroup>  <!-- =====blanked first option ====== -->
+								<optgroup label=""><option></option></optgroup>  
 								<optgroup label="Available Departments">
 
 								<?php
@@ -85,11 +85,12 @@ $numrow = $results->num_rows;
 					
 					<label for="Subject">Email Subject:</label>     
 						<input type="text" name="Subject" size="30" required></input><br />
+						<br>
+				<input type="file" name="file" id="file" class="inputfile inputfile-5"  />
+					<br>
+					<br>
+						<textarea name="Email" rows="8" cols="70" ></textarea>
 				
-					<br>
-					<br>
-						<textarea name="Email" rows="8" cols="70" >
-					</textarea>
 					
 					<br>
 					
@@ -115,10 +116,15 @@ $numrow = $results->num_rows;
 			<form name="admHome" action="adminHome.php" method="get">
 				<div = id="sendform3"> <!-- ===== Redirects user to adm page ============-->					
 					<input type="Submit" Value="SYSTEM ADMIN"></input>
+					
 				</div>
-			</form>			
-			<br />
+			</form>	
+			
+			
+				
+			<br>
 		</div>
+		
 		<div id="footer"> <!-- ======================== Main page footer ========================= -->
 			Jorge Souza - Bournemouth University  
 			| For more information, please contact us by email i7250872@bournemouth.ac.uk

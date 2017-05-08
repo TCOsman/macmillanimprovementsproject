@@ -38,7 +38,7 @@ header('Content-Disposition: attachment; filename=exportToCsv.csv');
 echo $csv_header . $csv_row;
 
 // Closing Connection	
-mysqli_close($conn); 
+mysql_close($conn); 
 // Exits the script
 exit();
 ?>

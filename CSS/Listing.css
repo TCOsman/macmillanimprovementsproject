@@ -2,6 +2,7 @@ body
 { 
 background-color: #FFFFF0; 
 text-align: center; 
+font-family: 'Roboto', sans-serif;
 }	
 
 div#main
@@ -19,6 +20,7 @@ div#title
 float: none; 
 padding: 5px; 
 font-size: 3.5em; 	
+font-family: 'Roboto', sans-serif;
 background-color: #E5E5FF; /* light blue */
 height: 80px;
 }
@@ -117,7 +119,7 @@ float: center;
 background-color: white;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1em;
 text-decoration: none;
 }
@@ -127,7 +129,7 @@ a.menubutton1:hover, a.menubutton1:focus
 background-color: #e6f2ff;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1em;
 font-weight: bold;
 text-decoration: none;
@@ -139,7 +141,7 @@ float: center;
 background-color: white;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1em;
 text-decoration: none;
 }
@@ -149,7 +151,7 @@ a.menubutton2:hover, a.menubutton1:focus
 background-color: #e6f2ff;
 padding: 5px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-size: 1em;
 font-weight: bold;
 text-decoration: none;
@@ -234,6 +236,7 @@ table-layout:fixed;
 margin: 0 auto; 
 font-size: 1.em; 
 border-collapse: collapse;
+font-family: 'Roboto', sans-serif;
 }
 
 th.one
@@ -333,7 +336,7 @@ a.link:hover, a.link:focus
 {
 padding: 2px;
 color: black;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-weight: bold;
 text-decoration: none;
 }
@@ -348,7 +351,7 @@ a.delete:hover, a.delete:focus
 {
 padding: 5px;
 color: red;
-font-family: arial;
+font-family: 'Roboto', sans-serif;
 font-weight: bold;
 text-decoration: none;
 }
@@ -392,12 +395,20 @@ background-color:  #F0FFFF;
 
 div#footer
 { 
+font-family: 'Roboto', sans-serif;
 clear: both; 
 position: relative; 
 border: solid 1px;
 padding: 5px; 
 font-size: 1em; 
 height:20px;
-}	
+}
+	
+div#searchBar {
+	margin-right: 940px;
+}
 
+div#menutext {
+	text-align: center;
+}
 

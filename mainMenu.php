@@ -17,7 +17,7 @@ require "session1-2.php";
     padding: 20px;
     background-color: #f44336;
     color: white;
-	 font-family: Arial, Helvetica, sans-serif;
+	 font-family: 'Roboto', sans-serif;
 }
 
 .closebtn {
@@ -39,10 +39,10 @@ require "session1-2.php";
 	<body>
 	<div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>WARNING!</strong> <br> <?php	require "dbconn.php";
+  <strong>EXPIRATION WARNINGS</strong> <br> <?php	require "dbconn.php";
 
 $connect = new mysqli($host, $user, $password, $database);
-
+ 
 if ($connect->connect_errno)
     {
 	echo "Failed to connect to MYSQL: " . $connect->connect_error;
@@ -148,20 +148,31 @@ echo ($volName . " " . $volSurname.  " " . 'has a licence expiring on ' . $drExp
 	
 		<div id="main"> <!-- ======================== Main Page ========================= -->
 			<div id="menus">
-				Database System <br />
+				
+			
+			<img src="Macmillan_logo_web.jpg" alt="Macmillan" style="width:200px;height:118px"> 
+		
+	<div id="menutext">
+				Database System 
 				Main Menu
 			</div>
+			</div>
+			</div>
 			<br />
+			
+			
 			<div id="menuOptions"> <!-- ======================== Specifies what type o action is needed ========================= -->
 				<div id="menuButtons1"> 
 					<a class="menubutton1" href="addRecords.php">ADD RECORDS</a>
 					<br> <Br> <BR> <br> <br>
 					<a class="menubutton1" href="emailDepartment.php">EMAIL DEPARTMENTS</a>
+						<br> <BR> <BR><BR>
+					<a class="menubutton1" href="emailAddressCopyForm.php">EMAIL ADDRESSES</a>
 				</div>	
 				<div id="menuButtons2"> 
 					<a class="menubutton1" href="listRecords.php">LIST RECORDS</a>
 					<br> <br> <br> <br> <Br>
-						<a class="menubutton1" href="emailDepartment.php">EMAIL A VOLUNTEER</a>
+						<a class="menubutton1" href="emailVolunteer.php">EMAIL A VOLUNTEER</a>
 				</div>	
 			
 		</div>
@@ -173,6 +184,12 @@ echo ($volName . " " . $volSurname.  " " . 'has a licence expiring on ' . $drExp
 			<form name="exitform" action="adminHome.php" method="get">
 				<div = id="sendform3"> <!-- ===== Redirects user to adm page ============-->					
 					<input type="Submit" Value="SYSTEM ADMIN"></input>
+				</div>
+			
+			</form>
+			<form name="Update Password" action="userUpdatePassword.php" method="get">
+				<div = id="sendform3"> <!-- ===== Goes back to the main Menuform ============-->					
+					<input type="Submit" Value="CHANGE PASSWORD"></input>
 				</div>
 			</form>
 		</div>

@@ -17,16 +17,16 @@ require "session1-2.php";
 		<div id="main"> <!-- ======================== Main Page ========================= -->
 			<div id="menus">
 				Database System <br />
-				Record has been added 
+				Password has been changed!
 			</div>
 			<br />
 			<div id="menuOptions"> <!-- ======================== Specifies what type o action is needed ========================= -->
 				<div id="menuButtons3"> 
-					<a class="menubutton1" href="addInsurance.php">ADD ANOTHER RECORD</a><br /><br />
+					<a class="menubutton1" href="adminChangePassword.php">CHANGE ANOTHER PASSWORD</a><br /><br />
+					<br /><br />	
+					<a class="menubutton1" href="addRecords.php">MAIN MENU</a><br /><br />
 					<br /><br />						
-					<a class="menubutton1" href="listRecords.php">LISTING MENU</a><br /><br />
-					<br /><br />						
-					<a class="menubutton1" href="insuranceListingDates.php">VIEW INSURANCE LIST</a>
+					
 				</div>	
 			</div>	
 			<form name="exitform" action="index.html" method="get">
@@ -34,11 +34,7 @@ require "session1-2.php";
 					<input type="Submit" Value="EXIT"></input>
 				</div>
 			</form>
-			<form name="mainMenu" action="addRecords.php" method="get">
-				<div = id="sendform3"> <!-- ===== Goes back to the main Menu form ============-->					
-					<input type="Submit" Value="ADD RECORDS MENU"></input>
-				</div>
-			</form>
+	
 		</div>
 		<div id="footer"> <!-- ======================== Main page footer ========================= -->
 			Jorge Souza - Bournemouth University  

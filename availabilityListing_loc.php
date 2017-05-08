@@ -5,15 +5,43 @@ require "session1-2.php";
 ?>
 
 <?php
-
 // connect to the database
 require "dbconn.php";
+
+// store the location identification in order to filter queries 
+$availabilityLocChosen = $_GET['wkLocID'];
+
+
+$paginquery = "SELECT v.volID, v.volName, v.volSurname, a.availDay, a.availTime, a.availFreq, a.availNote,
+                  j.jobDescription, w.wklocID, w.wkLocDescription, a.availID
+				  FROM vol_availability a, volunteer v, jobrole j, workLoc w
+				  WHERE a.wklocID = '".$availabilityLocChosen."' 
+				  AND v.volID = a.volID
+				  AND v.volTermReason = ' '  
+				  AND a.jobID = j.jobID
+				  GROUP BY a.availFreq, a.availDay, a.availTime, j.jobDescription 
+				  ORDER BY a.availFreq, a.availDay, a.availTime, j.jobDescription";	
+				  
+$results3 = $connect->query($paginquery);				  
+$record_count = $results3->num_rows;
+
+
+//max displayed records per page
+$per_page = 20;
+@$start = $_GET['start'];
+
+// variable which defines how many pages will be displayed - ceil is used to round the number up 
+$max_pages =  ceil ($record_count / $per_page); 
+
+if (!$start)
+   $start = 0;
+
+
 
 // Test to check if the database is connected
 $connect = new mysqli($host, $user, $password, $database);
 
-// store the location identification in order to filter queries 
-$availabilityLocChosen = $_GET['wkLocID'];
+
 
 if ($connect->connect_errno)
     {
@@ -34,7 +62,8 @@ $query2 = "SELECT v.volID, v.volName, v.volSurname, a.availDay, a.availTime, a.a
 				  AND v.volTermReason = ' '  
 				  AND a.jobID = j.jobID
 				  GROUP BY a.availFreq, a.availDay, a.availTime, j.jobDescription 
-				  ORDER BY a.availFreq, a.availDay, a.availTime, j.jobDescription";		 
+				  ORDER BY a.availFreq, a.availDay, a.availTime, j.jobDescription
+				 ";		 
 		  
 // execute the query which gets the name of the unit
 $results1 = $connect->query($query1);
@@ -53,6 +82,8 @@ $numrow1 = $results1->num_rows;
   
 // count the number of rows that will be selected from the table query2
 $numrow2 = $results2->num_rows;	
+
+
 ?>
 
 <!DOCTYPE html> 
@@ -138,9 +169,20 @@ $numrow2 = $results2->num_rows;
 								 
 							}	
 					  echo "</table>";
+					  echo "</div>";
 					echo "<br />";		
+					
+				echo "</div>";
+				
+				for ($x = 0; $x <= $record_count; $x++) {
+					echo "<br>";
+					
+				}
+				
 					?> 
-				</div>
+					
+				
+				
 				<form name="availabilityListing" action="availabilityListing.php" method="get">
 					<div = id="sendform1"> <!-- ===== sending form ============-->					
 						<input type="Submit" Value="AVAILABILITY"></input>
@@ -152,6 +194,7 @@ $numrow2 = $results2->num_rows;
 					</div>
 				</form>
 		</div>
+		
 		<div id="footer"> <!-- ======================== Main page footer ========================= -->
 			Jorge Souza - Bournemouth University  
 			| For more information, please contact us by email i7250872@bournemouth.ac.uk

@@ -38,9 +38,16 @@ if (!$start)
    $start = 0;
 
 // to set a variable which holds the query results - Ordered by volID
-$get = $connect->query("SELECT *
+/* $get = $connect->query("SELECT *
 		  FROM volunteer
 		  ORDER BY volStarDate
+		  LIMIT $start, $per_page");
+	*/	  
+$get = $connect->query("SELECT v.volID, v.volName, v.volSurname, v.volDOB, v.volAddress1, v.volAddress2, v.volAddress3, v.volTown, v.volPostcode, v.volMobile, v.volLandline, v.volEmail, v.volStarDate, v.volEndDate, v.volTermReason, v.volTitle, v.jobID, j.jobDescription, j.jobID 
+FROM volunteer v  
+LEFT JOIN jobrole j
+ON v.jobID = j.jobID
+ ORDER BY volStarDate
 		  LIMIT $start, $per_page");
 
 // count the number of rows that will be selected from query 
@@ -67,7 +74,7 @@ $numrow = $get->num_rows;
 					<th class="twenty">Address1</th>
 					<th class="twenty">Address2</th>
 					<th class="twenty">Address3</th>					
-					<th class="ten">Town</th>
+					<th class="ten"><a a class="link" href="volunteerListing_town.php">Town</th>
 					<th class="ten">Postcode</th>
 					<th class="ten">Mobile</th>
 					<th class="ten">Landline</th>
@@ -75,6 +82,9 @@ $numrow = $get->num_rows;
 					<th class="ten headings"><a a class="link" href="volunteerListing_start.php">Start Date</th>
 					<th class="ten">Termination Date</th>
 					<th class="ten"><a a class="link" href="volunteerListing_term.php">Termination Reason</th>
+					<th class="ten">Job</th>
+					<th class="ten"><a a class="link" href="volunteerListing_Service.php">Length of Service (Months)</th>
+					
 					<th class="five">DELETE</th>
 					<?php	
 						// for each row of data, put the values into an array called $row
@@ -143,6 +153,16 @@ $numrow = $get->num_rows;
 								echo $volTermReason; 
 								echo "</td>";
 								
+								echo "<td>";
+								echo $jobDescription; 
+								echo "</td>";
+								
+								echo "<td>";
+								$serviceLength = ((strtotime('today') - strtotime($volStarDate))/2592000 );
+								$serviceLength = round( $serviceLength, 1, PHP_ROUND_HALF_UP);
+								echo $serviceLength;
+								echo "</td>";
+								
 								// delete button with a warning box
 								echo "<td class='center'>";
 								echo 	"<a class='delete' href='deleteVolunteer.php?volID=".$volID."' 
@@ -155,6 +175,9 @@ $numrow = $get->num_rows;
 							}	
 					echo "</table>";
 				echo "</div>";
+				echo "<br> <br> <br>";
+				echo "<br> <br> <br>";
+				echo "<br> <br> <br>";
 				echo "<br />";										
 					
 						// defining variables to hold pagination
